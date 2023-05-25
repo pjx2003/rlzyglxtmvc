@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.managers.mapper.WorkerMapper">
+
+    <!--员工查询-->
+    <select id="works" resultType="Worker">
+        select *
+        from person
+    </select>
+
+    <!--员工注册-->
+    <insert id="register" parameterType="Worker">
+        insert into person(username, password, gender, age, department, phone)
+        values (#{username}, #{password}, #{gender}, #{age},
+                #{department}, #{phone})
+    </insert>
+
+    <!--通过姓名查询-->
+    <select id="selWorker" resultType="Worker">
+        select *
+        from person
+        where username = #{username}
+    </select>
+
+    <!--通过id查询-->
+    <select id="workerId" resultType="Worker">
+        select *
+        from person
+        where id = #{id}
+    </select>
+
+    <!--修改员工信息-->
+    <update id="modifyWorker" parameterType="Worker">
+        update person
+        set username=#{username},
+            password=#{password},
+            gender=#{gender},
+            age=#{age},
+            department=#{department},
+            phone=#{phone}
+        where id = #{id}
+    </update>
+</mapper>
