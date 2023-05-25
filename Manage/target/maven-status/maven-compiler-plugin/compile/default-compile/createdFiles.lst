@@ -1,0 +1,11 @@
+com\managers\service\TrainService.class
+com\managers\config\LogConfig.class
+com\managers\mapper\LogMapper.class
+com\managers\mapper\TrainMapper.class
+com\managers\controller\LogController.class
+com\managers\service\LogService.class
+com\managers\pojo\LogUser.class
+com\managers\controller\TrainController.class
+com\managers\service\impl\LogServiceImpl.class
+com\managers\pojo\Trains.class
+com\managers\service\impl\TrainServiceImpl.class

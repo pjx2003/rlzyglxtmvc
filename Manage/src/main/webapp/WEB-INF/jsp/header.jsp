@@ -23,7 +23,7 @@
                 <li><a href="${pageContext.request.contextPath}/home">首页</a></li>
                 <li><a href="${pageContext.request.contextPath}/paginationservlet" title="对所有的员工进行相应的操作">员工管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/networkservlet" title="对所有的管理员进行相应的操作">系统管理</a></li>
-                <li><a href="${pageContext.request.contextPath}/trainingservlet" title="对所有的培训机构进行相应的操作">培训管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/trains/train" title="对所有的培训机构进行相应的操作">培训管理</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

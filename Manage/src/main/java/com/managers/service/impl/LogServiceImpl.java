@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LogServiceImpl implements LogService {
 
+    //连接mapper层
     @Autowired
     private LogMapper logMapper;
 
