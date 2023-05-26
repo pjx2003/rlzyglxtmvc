@@ -26,7 +26,7 @@ public class WorkerController {
     public String Workers(Model model) {
         ArrayList<Worker> workers = workerService.workers();
         model.addAttribute("work", workers);
-        return "worker";
+        return "redirect:/page/findPag";
     }
 
     //返回注册界面
@@ -82,6 +82,13 @@ public class WorkerController {
             model.addAttribute("err", "修改失败");
             return "modify";
         }
+        return "redirect:/worker/work";
+    }
+
+    //通过指定id删除信息
+    @RequestMapping(value = "/removeId", method = RequestMethod.GET)
+    public String removeId(int id) {
+        workerService.removeId(id);
         return "redirect:/worker/work";
     }
 }

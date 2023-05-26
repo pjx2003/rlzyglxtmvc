@@ -65,7 +65,7 @@
 
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-8" style="font-size: 15px;color: red;text-align: center">1111${error}</div>
+            <div class="col-md-8" style="font-size: 15px;color: red;text-align: center">${error}</div>
             <div class="col-md-2"></div>
         </div>
 

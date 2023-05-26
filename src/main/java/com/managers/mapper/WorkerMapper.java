@@ -20,4 +20,7 @@ public interface WorkerMapper {
 
     //修改员工信息
     int modifyWorker(Worker worker);
+
+    //通过id删除信息
+    int removeId(@Param("id") int id);
 }

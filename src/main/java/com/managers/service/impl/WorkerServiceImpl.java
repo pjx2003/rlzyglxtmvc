@@ -39,4 +39,9 @@ public class WorkerServiceImpl implements WorkerService {
     public int modifyWorker(Worker worker) {
         return workerMapper.modifyWorker(worker);
     }
+
+    //通过id删除信息
+    public int removeId(int id) {
+        return workerMapper.removeId(id);
+    }
 }

@@ -19,4 +19,7 @@ public interface WorkerService {
 
     //修改员工信息
     int modifyWorker(Worker worker);
+
+    //通过id删除员工信息
+    int removeId(int id);
 }

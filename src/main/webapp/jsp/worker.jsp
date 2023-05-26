@@ -30,7 +30,7 @@
     <script>
         function delU(v) {
             if (confirm("确定要删除吗?")) {
-                location.href = "${pageContext.request.contextPath}/deleteservlet?id=" + v;
+                location.href = "${pageContext.request.contextPath}/worker/removeId?id=" + v;
                 window.alert("成功")
             }
         }
@@ -52,7 +52,7 @@
         <form class="form-inline" method="post" action="${pageContext.request.contextPath}/worker/selWorker">
             <div class="form-group">
                 <label for="name">姓名</label>
-                <input type="text" class="form-control" id="name" name="username">
+                <input type="text" class="form-control" id="name" name="username" placeholder="要搜索的姓名">
             </div>
             <button type="submit" class="btn btn-default">搜索</button>
             <br/>
@@ -91,60 +91,60 @@
 </table>
 
 <%--分页--%>
-<nav aria-label="Page navigation">
-    <ul class="pagination">
-        <%--判断当前页是否为第一页--%>
-        <c:if test="${pg.nowPageCount==1}">
-        <li class="disabled">
-            <a href="${pageContext.request.contextPath}/paginationservlet?nowPageCount=${pg.nowPageCount}&pageShowrow=5&username=${pg1.username[0]}"
-               aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-            </c:if>
+<%--判断是否存在pg--%>
+<c:if test="${pg!=null}">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+                <%--判断当前页是否为第一页--%>
+            <c:if test="${pg.pageNow==1}">
+            <li class="disabled">
+                <a aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </c:if>
 
-            <c:if test="${pg.nowPageCount!=1}">
-        <li>
-            <a href="${pageContext.request.contextPath}/paginationservlet?nowPageCount=${pg.nowPageCount-1}&pageShowrow=5&username=${pg1.username[0]}"
-               aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-            </c:if>
-        </li>
+                <c:if test="${pg.pageNow!=1}">
+            <li>
+                <a href="${pageContext.request.contextPath}/page/findPage?nowPag=${pg.pageNow-1}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </c:if>
+            </li>
 
-        <c:forEach begin="1" end="${pg.pagePageCount}" var="i">
-            <%--判断当前页和选中的项是否相同--%>
-            <c:if test="${pg.nowPageCount==i}">
-                <li class="active"><a
-                        href="${pageContext.request.contextPath}/paginationservlet?nowPageCount=${i}&pageShowrow=5&username=${pg1.username[0]}">${i}</a>
-                </li>
-            </c:if>
-            <c:if test="${pg.nowPageCount!=i}">
-                <li>
-                    <a href="${pageContext.request.contextPath}/paginationservlet?nowPageCount=${i}&pageShowrow=5&username=${pg1.username[0]}">${i}</a>
-                </li>
-            </c:if>
-        </c:forEach>
+            <c:forEach begin="1" end="${pg.totalPage}" var="i">
+                <%--判断当前页和选中的项是否相同--%>
+                <c:if test="${pg.pageNow==i}">
+                    <li class="active">
+                        <a href="${pageContext.request.contextPath}/page/findPage?nowPag=${i}">${i}</a>
+                    </li>
+                </c:if>
+                <c:if test="${pg.pageNow!=i}">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/page/findPage?nowPag=${i}">${i}</a>
+                    </li>
+                </c:if>
+            </c:forEach>
 
-        <%--判断是否为最后一页--%>
-        <c:if test="${pg.nowPageCount==pg.pagePageCount}">
-        <li class="disabled">
-            <a href="${pageContext.request.contextPath}/paginationservlet?nowPageCount=${pg.nowPageCount}&pageShowrow=5&username=${pg1.username[0]}"
-               aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-            </c:if>
-            <c:if test="${pg.nowPageCount!=pg.pagePageCount}">
-        <li>
-            <a href="${pageContext.request.contextPath}/paginationservlet?nowPageCount=${pg.nowPageCount+1}&pageShowrow=5&username=${pg1.username[0]}"
-               aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-            </c:if>
+                <%--判断是否为最后一页--%>
+            <c:if test="${pg.pageNow==pg.totalPage}">
+            <li class="disabled">
+                <a aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </c:if>
+                <c:if test="${pg.pageNow!=pg.totalPage}">
+            <li>
+                <a href="${pageContext.request.contextPath}/page/findPage?nowPag=${pg.pageNow+1}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </c:if>
 
-        </li>
-        <span style="font-size: 20px;margin-left: 10px;">一共${pg.pageCount}条数据,共${pg.pagePageCount}页</span>
-    </ul>
-</nav>
+            </li>
+            <span style="font-size: 20px;margin-left: 10px;">一共${pg.total}条数据,共${pg.totalPage}页</span>
+        </ul>
+    </nav>
+
+</c:if>
 
 </body>
 </html>

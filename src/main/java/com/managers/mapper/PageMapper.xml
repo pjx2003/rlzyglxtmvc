@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.managers.mapper.PageMapper">
+    <!--查询总条数-->
+    <select id="totals" resultType="Int">
+        select count(*)
+        from person
+    </select>
+
+    <!--分页查询-->
+    <select id="PageSelect" resultType="Worker">
+        select id, username, password, gender, age, department, phone
+        from person limit #{offset}, #{limit}
+    </select>
+
+</mapper>
