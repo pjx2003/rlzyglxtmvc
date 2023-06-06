@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +18,7 @@ public class LogController {
     private LogService logService;
 
     //用户登录
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login")
     public String logUser(String username, String password, HttpSession session, Model model) {
         LogUser logUser = logService.logUser(new LogUser(username, password));
         if (logUser != null) {
@@ -50,7 +51,9 @@ public class LogController {
 
     //返回登录界面
     @RequestMapping("/index")
-    public String index() {
+    //删除共享域中的值
+    public String index(HttpSession session) {
+        session.removeAttribute("LogSuccess");
         return "index";
     }
 
