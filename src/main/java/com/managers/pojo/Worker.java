@@ -1,12 +1,19 @@
 package com.managers.pojo;
 
 public class Worker {
+    //人员id
     private int id;
+    //用户名
     private String username;
+    //密码
     private String password;
+    //性别
     private String gender;
+    //年龄
     private int age;
+    //部门
     private String department;
+    //手机号
     private String phone;
 
     public Worker(int id, String username, String password, String gender, int age, String department, String phone) {

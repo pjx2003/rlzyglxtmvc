@@ -5,7 +5,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-    <!--放行相关的js,css,gif内容-->
+    <!--放行相关的js,css,gif，ico等内容-->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.js</url-pattern>
@@ -42,6 +42,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--初始界面-->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
@@ -63,5 +64,6 @@
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
+    
 </web-app>
         

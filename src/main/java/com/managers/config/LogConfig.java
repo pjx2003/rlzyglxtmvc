@@ -11,7 +11,8 @@ public class LogConfig implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //请求地址
         String uri = request.getRequestURI();
-        if(uri.contains("/index")||uri.contains("/forget")||uri.contains("/login")){
+        //包括指定的内容则放行
+        if (uri.contains("/index") || uri.contains("/forget") || uri.contains("/login")) {
             return true;
         }
         //获取session
